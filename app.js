@@ -20,7 +20,7 @@ const reviewsRouter = require("./routes/review.js");
 const listingsRouter = require("./routes/listing.js");
 const userRouter = require("./routes/user.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust"; // Directly using the local MongoDB URL
+const MONGO_URL = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/wanderlust";
 
 // Connect to MongoDB
 main()
@@ -88,10 +88,13 @@ app.get('/', (req, res) => {
   res.redirect('/listings');
 });
 
+const dashboardRouter = require("./routes/dashboard.js");
+
 // Define routes
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
+app.use("/dashboard", dashboardRouter);
 
 // Error handling for unknown routes
 app.all("*", (req, res, next) => {
@@ -104,6 +107,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("./listings/error.ejs", { message });
 });
 
-app.listen(8080, () => {
-  console.log("Server is listening on port 8080");
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });

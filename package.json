@@ -33,5 +33,9 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "faker": "^6.6.6"
   }
 }

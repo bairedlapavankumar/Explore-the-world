@@ -1,0 +1,19 @@
+<%layout("/layouts/boilerplate")%>
+<div class="container mt-4">
+    <h2>User Dashboard</h2>
+    <p>Welcome, <%= currUser.username %>! Here are your travel details.</p>
+    
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Upcoming Travels
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-muted">You have no upcoming travels booked. Start exploring!</p>
+                    <a href="/listings" class="btn btn-outline-primary">Explore Destinations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
