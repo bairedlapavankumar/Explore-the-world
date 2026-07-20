@@ -149,7 +149,7 @@
 </style>
 
 <script>
-  const mapToken = "<%= process.env.MAP_TOKEN %>";
+  const mapToken = "<%= process.env.MAP_TOKEN || process.env.MAPBOX_TOKEN %>";
   const listing = <%- JSON.stringify(listing) %>;
 </script>
 <div class="row tm mt-3">
